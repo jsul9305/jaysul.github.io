@@ -36,6 +36,20 @@
             margin-bottom: 10px;
         }
     </style>
+    <script>
+        let iframes = [];
+        let currentIndex = 0;
+
+        function refreshIframes() {{
+            iframes[currentIndex].contentWindow.location.reload();
+            currentIndex = (currentIndex + 1) % iframes.length;
+        }}
+
+        window.onload = function() {{
+            iframes = document.querySelectorAll('iframe');
+            setInterval(refreshIframes, 60000); // Refresh every 60 seconds
+        }}
+    </script>
 </head>
 <body>
     <h1>Table of Contents</h1>
